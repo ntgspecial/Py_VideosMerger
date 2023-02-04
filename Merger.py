@@ -41,25 +41,25 @@ InputLink=st.text_input("Enter Links")
 Ext=st.text_input("Ext")
 Task=st.button('Merge',key='submit') 
 Links=InputLink.split(",")
-N=len(Links) 
-for i in range(0,N):
+N=len(Links)
 
-    # Set the chunk size (in bytes)
-    chunk_size = 1024
-
-    # Make a GET request to the direct download link
-    response = requests.get(Links[i], stream=True)
-
-    # Check if the request was successful
-    if response.status_code == 200:
-    # Write the contents of the response to a local file, chunk by chunk
-        with open("Video{}.{}".format(i,Ext), "wb") as f:
-            for chunk in response.iter_content(chunk_size=chunk_size):
-                f.write(chunk)
-        print("File downloaded successfully")
-    else:
-        print("Failed to download file")
 if Task:
+    for i in range(0,N):
+        # Set the chunk size (in bytes)
+        chunk_size = 1024
+
+        # Make a GET request to the direct download link
+        response = requests.get(Links[i], stream=True)
+
+        # Check if the request was successful
+        if response.status_code == 200:
+        # Write the contents of the response to a local file, chunk by chunk
+            with open("Video{}.{}".format(i,Ext), "wb") as f:
+                for chunk in response.iter_content(chunk_size=chunk_size):
+                    f.write(chunk)
+            print("File downloaded successfully")
+        else:
+            print("Failed to download file")
     MovMerge(N,Ext)
     AnonF(Ext)
 
