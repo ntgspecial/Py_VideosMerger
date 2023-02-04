@@ -38,7 +38,7 @@ def AnonF(Ext):
     st.write(uploaded_video_url)
 
 InputLink=st.text_input("Enter Links")
-Ext=st.text_input("Ext?")
+Ext=st.text_input("Ext")
 Links=InputLink.split(",").strip()
 N=len(Links) 
 for i in range(0,N):
