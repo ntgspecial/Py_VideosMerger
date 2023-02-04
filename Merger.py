@@ -39,6 +39,7 @@ def AnonF(Ext):
 
 InputLink=st.text_input("Enter Links")
 Ext=st.text_input("Ext")
+Task=st.button('Merge',key='submit') 
 Links=InputLink.split(",")
 N=len(Links) 
 for i in range(0,N):
@@ -58,6 +59,7 @@ for i in range(0,N):
         print("File downloaded successfully")
     else:
         print("Failed to download file")
-MovMerge(N,Ext)
-AnonF(Ext)
+if Task:
+    MovMerge(N,Ext)
+    AnonF(Ext)
 
