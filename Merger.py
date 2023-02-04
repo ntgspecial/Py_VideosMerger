@@ -39,7 +39,7 @@ def AnonF(Ext):
 
 InputLink=st.text_input("Enter Links")
 Ext=st.text_input("Ext")
-Links=InputLink.split(",").strip()
+Links=InputLink.split(",")
 N=len(Links) 
 for i in range(0,N):
 
