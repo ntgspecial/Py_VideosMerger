@@ -1,12 +1,14 @@
 import streamlit as st
 from moviepy.editor import *
 import requests
+import logging
 
 logging.info('App Started')
 st.set_page_config(page_title='SVCET Marks',page_icon=':wave:', layout='centered')
 st.title("Video Merger")
 
 def MovMerge(N,Ext):
+    logging.info('Merging '+N+' Videos') 
     # List of video clips
     clips = [VideoFileClip("Video{}.{}".format(i,Ext) for i in range(0,N))]
 
@@ -15,8 +17,10 @@ def MovMerge(N,Ext):
 
     # Save the final video
     final_clip.write_videofile("final_video."+Ext)
+    logging.info('Merged')
 
 def AnonF(Ext):
+    logging.info('Uploading') 
     # Define the API endpoint for uploading a file to anonfiles
     url = "https://api.anonfiles.com/upload"
 
@@ -29,7 +33,7 @@ def AnonF(Ext):
     # Get the URL of the uploaded video from the response
     response_json = response.json()
     uploaded_video_url = response_json["data"]["file"]["url"]["full"]
-
+    logging.info('Uploading '+uploaded_video_url) 
     # Print the URL of the uploaded video
     st.write(uploaded_video_url)
 
